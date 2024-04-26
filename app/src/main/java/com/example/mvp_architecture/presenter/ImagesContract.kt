@@ -4,14 +4,14 @@ import com.example.mvp_architecture.model.ListModel
 
 class ImagesContract {
 
-    interface View{
+    interface View {
         fun showLoading();
         fun hideLoading();
-        fun showImages(images : List<ListModel>)
+        fun showImages(images : ListModel)
         fun showError(message : String)
     }
 
-    interface Presenter{
+    interface Presenter {
         fun getImages()
     }
 }

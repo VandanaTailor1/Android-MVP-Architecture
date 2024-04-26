@@ -36,7 +36,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding {
+        enable =true
+    }
 }
+
 kapt {
     correctErrorTypes = true
 }
@@ -53,7 +57,7 @@ dependencies {
 
     // retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    // GSON
+    // GSONww
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
@@ -61,4 +65,10 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
+
+
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    kapt ("com.github.bumptech.glide:compiler:4.16.0")
+
+    implementation ("com.squareup.picasso:picasso:2.8")
 }
