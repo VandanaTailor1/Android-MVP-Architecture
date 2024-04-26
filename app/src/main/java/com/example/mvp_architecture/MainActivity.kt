@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.mvp_architecture.databinding.ActivityMainBinding
 import com.example.mvp_architecture.model.ListModel
@@ -13,6 +14,7 @@ import com.example.mvp_architecture.presenter.ImagesPresenter
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -34,7 +36,6 @@ class MainActivity : AppCompatActivity() ,ImagesContract.View{
             imagesPresenter.getImages()
         })
 
-
     }
 
     override fun showLoading() {
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() ,ImagesContract.View{
 
     override fun showImages(images: ListModel) {
         Log.d("Loading3", "showLoading: $images ");
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            Glide.with(this@MainActivity).load(images.message).into(binding.ivImages)
+        }
 
     }
 
